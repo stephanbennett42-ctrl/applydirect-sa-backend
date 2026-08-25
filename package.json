@@ -1,0 +1,31 @@
+{
+  "name": "applydirect-sa-backend",
+  "version": "1.0.0",
+  "description": "Node.js Express REST API and MySQL backend service for ApplyDirect SA.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephanbennett42-ctrl/applydirect-sa-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/stephanbennett42-ctrl/applydirect-sa-backend/issues"
+  },
+  "homepage": "https://github.com/stephanbennett42-ctrl/applydirect-sa-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.24.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
