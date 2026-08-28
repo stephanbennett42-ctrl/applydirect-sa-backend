@@ -9,14 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 // GET: Fetch all institutions
-app.get("/api/institutions", async (req, res) => {
+app.get('/api/institutions', async (req, res) => {
   try {
-    const [rows] = await db.query(
-      "SELECT * FROM institutions ORDER BY name ASC",
-    );
-    res.json({ success: true, count: rows.length, data: rows });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    const [results] = await db.query('SELECT * FROM institutions');
+    res.json({ success: true, data: results });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
