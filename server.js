@@ -9,15 +9,29 @@ app.use(cors());
 app.use(express.json());
 
 // GET: Fetch all institutions
+// GET /api/institutions
 app.get('/api/institutions', async (req, res) => {
   try {
-    const [results] = await db.query('SELECT * FROM institutions');
-    res.json({ success: true, data: results });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    const [rows] = await db.query(`
+      SELECT 
+        institution_id, 
+        name, 
+        institution_type, 
+        province, 
+        application_status, 
+        application_fee, 
+        website_url, 
+        application_url 
+      FROM institutions
+      ORDER BY name ASC
+    `);
+    
+    res.json({ success: true, data: rows });
+  } catch (error) {
+    console.error('Database query error:', error);
+    res.status(500).json({ success: false, message: 'Server error retrieving institutions' });
   }
 });
-
 // GET: Fetch single institution details by ID
 app.get("/api/institutions/:id", async (req, res) => {
   try {

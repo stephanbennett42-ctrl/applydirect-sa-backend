@@ -49,3 +49,31 @@ VALUES
 
   -- NORTHERN CAPE
   ('Sol Plaatje University (SPU)', 'University', 'Northern Cape', 'Open', 100.00, '2026-04-01', '2026-11-30', 'https://www.spu.ac.za');
+  
+  
+  SET SQL_SAFE_UPDATES = 0;
+
+-- 1. Add column if not added yet
+ALTER TABLE institutions ADD COLUMN application_url VARCHAR(255);
+
+-- 2. Populate direct application URLs for all institutions
+UPDATE institutions SET application_url = 'https://www.cput.ac.za/study/apply' WHERE name LIKE '%CPUT%' OR name LIKE '%Cape Peninsula%';
+UPDATE institutions SET application_url = 'https://www.uct.ac.za/main/apply' WHERE name LIKE '%University of Cape Town%' OR name LIKE '%UCT%';
+UPDATE institutions SET application_url = 'https://www.sun.ac.za/english/maties/apply' WHERE name LIKE '%Stellenbosch%';
+UPDATE institutions SET application_url = 'https://www.uwc.ac.za/study/apply' WHERE name LIKE '%University of the Western Cape%' OR name LIKE '%UWC%';
+UPDATE institutions SET application_url = 'https://www.wits.ac.za/undergraduate/apply-to-wits/' WHERE name LIKE '%Witwatersrand%' OR name LIKE '%Wits%';
+UPDATE institutions SET application_url = 'https://www.uj.ac.za/admission-aid/undergraduate/' WHERE name LIKE '%University of Johannesburg%' OR name LIKE '%UJ%';
+UPDATE institutions SET application_url = 'https://www.up.ac.za/online-application' WHERE name LIKE '%University of Pretoria%' OR name LIKE '%UP%';
+UPDATE institutions SET application_url = 'https://www.tut.ac.za/study-at-tut/apply' WHERE name LIKE '%Tshwane University of Technology%' OR name LIKE '%TUT%';
+UPDATE institutions SET application_url = 'https://www.dut.ac.za/apply/' WHERE name LIKE '%Durban University of Technology%' OR name LIKE '%DUT%';
+UPDATE institutions SET application_url = 'https://applications.ukzn.ac.za/' WHERE name LIKE '%KwaZulu-Natal%' OR name LIKE '%UKZN%';
+UPDATE institutions SET application_url = 'https://studies.nwu.ac.za/undergraduate-studies/apply' WHERE name LIKE '%North-West University%' OR name LIKE '%NWU%';
+UPDATE institutions SET application_url = 'https://www.ru.ac.za/admissiongateway/' WHERE name LIKE '%Rhodes%';
+UPDATE institutions SET application_url = 'https://myfuture.mandela.ac.za/' WHERE name LIKE '%Nelson Mandela%';
+UPDATE institutions SET application_url = 'https://www.ufs.ac.za/apply' WHERE name LIKE '%Free State%' OR name LIKE '%UFS%';
+UPDATE institutions SET application_url = 'https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission' WHERE name LIKE '%UNISA%' OR name LIKE '%South Africa%';
+UPDATE institutions SET application_url = 'https://www.eduvos.com/apply-now/' WHERE name LIKE '%Eduvos%';
+UPDATE institutions SET application_url = 'https://www.varsitycollege.co.za/apply' WHERE name LIKE '%Varsity College%';
+UPDATE institutions SET application_url = 'https://www.rosebankcollege.co.za/apply' WHERE name LIKE '%Rosebank College%';
+
+SET SQL_SAFE_UPDATES = 1;
